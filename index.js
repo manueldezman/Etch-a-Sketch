@@ -1,8 +1,23 @@
-let size = prompt("Enter yout preferred grid size:  ");
+// let size = prompt("Enter yout preferred grid size:  ");
 
-// let colors = ["red", "green", "yellow", "blue", "aqua", "grey", "orange", "cyan", "teal", "brown"];
+const container = document.querySelector(".container");
 
-// let arraylength = colors.length - 1;
+function createDiv(size) {
+    
+    container.textContent = "";
+    for (let row = 0; row < size; row++) {
+    
+        for (let column = 0; column < size; column++ ) {
+            
+            let div = document.createElement("div");
+            div.classList.add("square");
+            div.style.width = `calc(100% / ${size} )`;
+            div.style.height = `calc(100% / ${size} )`;
+            container.appendChild(div);
+    
+        }
+    }   
+}
 
 function generateColor () {
     let r =  Math.floor(Math.random() * 256);
@@ -14,23 +29,28 @@ function generateColor () {
     
 }
 
+let size = 16;
+createDiv(size);
 
-const container = document.querySelector(".container");
+const input = document.querySelector(".gridInput");
+const button = document.querySelector(".button");
+const paragraph = document.querySelector(".sizeResult");
 
-for (let row = 0; row < size; row++) {
+button.addEventListener("click", () => {
     
-    for (let column = 0; column < size; column++ ) {
-        
-        let div = document.createElement("div");
-        div.classList.add("square");
-        div.style.width = `calc(100% / ${size} )`;
-        div.style.height = `calc(100% / ${size} )`;
-        container.appendChild(div);
-
+    if (input.value > 100) {
+        paragraph.textContent = "You can only set a maximum of 100 X 100 grid";
+    
     }
-}   
+    else {
+        paragraph.textContent = "";
+        size = input.value;
+        console.log(size);
+        createDiv(size);
+    }
+    
 
-const square = document.querySelector(".square");
+})
 
 container.addEventListener('mouseover',  (e) => {
     let color = generateColor();
