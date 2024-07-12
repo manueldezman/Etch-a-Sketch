@@ -1,11 +1,17 @@
 let size = prompt("Enter yout preferred grid size:  ");
 
-let colors = ["red", "green", "yellow", "blue", "aqua", "grey", "orange", "cyan", "teal", "brown"];
+// let colors = ["red", "green", "yellow", "blue", "aqua", "grey", "orange", "cyan", "teal", "brown"];
 
-let arraylength = colors.length - 1;
+// let arraylength = colors.length - 1;
 
-function getRandomNumber (arraylength) {
-    return Math.floor(Math.random() * arraylength);
+function generateColor () {
+    let r =  Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+
+    return `rgb(${r}, ${g}, ${b})`;
+
+    
 }
 
 
@@ -27,13 +33,13 @@ for (let row = 0; row < size; row++) {
 const square = document.querySelector(".square");
 
 container.addEventListener('mouseover',  (e) => {
-    let index = getRandomNumber(arraylength);
+    let color = generateColor();
 
     let activeDiv = e.target;
     console.log(e.target);
     console.log(e.type);
 
-    console.log(index);
+    console.log(color);
 
-    activeDiv.style.backgroundColor = colors[index];
+    activeDiv.style.backgroundColor = color;
 });
