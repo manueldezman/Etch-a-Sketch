@@ -1,4 +1,3 @@
-// let size = prompt("Enter yout preferred grid size:  ");
 
 const container = document.querySelector(".container");
 
@@ -45,7 +44,6 @@ button.addEventListener("click", () => {
     else {
         paragraph.textContent = "";
         size = input.value;
-        console.log(size);
         createDiv(size);
     }
     
@@ -56,10 +54,6 @@ container.addEventListener('mouseover',  (e) => {
     let color = generateColor();
 
     let activeDiv = e.target;
-    console.log(e.target);
-    console.log(e.type);
-
-    console.log(color);
 
     activeDiv.style.backgroundColor = color;
 });
